@@ -1,18 +1,9 @@
-package com.assignment.car.rental.entities;
+package com.assignment.car.rental.rest.request.car;
 
 import java.time.ZonedDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+public class CarDTO {
 
-import com.assignment.car.rental.rest.request.car.CarType;
-
-@Entity
-public class Car {
-
-	@Id
-	@GeneratedValue
 	private Long id;
 
 	private String carNumberPlate;
@@ -39,6 +30,14 @@ public class Car {
 		this.availableTos = availableTos;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getCarNumberPlate() {
 		return carNumberPlate;
 	}
@@ -53,10 +52,6 @@ public class Car {
 
 	public void setCarType(CarType carType) {
 		this.carType = carType;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 }
