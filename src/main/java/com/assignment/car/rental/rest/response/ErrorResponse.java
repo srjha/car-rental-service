@@ -1,4 +1,4 @@
-package com.assignment.car.rental.rest.response.error;
+package com.assignment.car.rental.rest.response;
 
 public class ErrorResponse {
 

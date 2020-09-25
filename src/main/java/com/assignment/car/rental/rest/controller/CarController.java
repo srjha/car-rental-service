@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.assignment.car.rental.rest.request.AvailibilityDTO;
 import com.assignment.car.rental.rest.request.CarDTO;
 import com.assignment.car.rental.services.CarService;
 
+@Validated
 @RestController
 public class CarController {
 
@@ -25,7 +27,7 @@ public class CarController {
 	}
 
 	@PostMapping("/cars")
-	ResponseEntity<CarDTO> createEntry(@RequestBody CarDTO car) {
+	ResponseEntity<CarDTO> createEntry(@RequestBody @Valid CarDTO car) {
 		return ResponseEntity.ok(carService.save(car));
 
 	}
