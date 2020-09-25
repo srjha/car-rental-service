@@ -1,0 +1,37 @@
+package com.assignment.car.rental.rest.request;
+
+import com.assignment.car.rental.entities.CarType;
+
+public class CarDTO {
+
+	private Long id;
+
+	private String carNumberPlate;
+
+	private CarType carType;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCarNumberPlate() {
+		return carNumberPlate;
+	}
+
+	public void setCarNumberPlate(String carNumberPlate) {
+		this.carNumberPlate = carNumberPlate;
+	}
+
+	public CarType getCarType() {
+		return carType;
+	}
+
+	public void setCarType(CarType carType) {
+		this.carType = carType;
+	}
+
+}
