@@ -1,12 +1,15 @@
 package com.assignment.car.rental.entities;
 
-import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import com.assignment.car.rental.rest.request.car.CarType;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Car {
@@ -19,25 +22,9 @@ public class Car {
 
 	private CarType carType;
 
-	private ZonedDateTime availableFrom;
-
-	private ZonedDateTime availableTos;
-
-	public ZonedDateTime getAvailableFrom() {
-		return availableFrom;
-	}
-
-	public void setAvailableFrom(ZonedDateTime availableFrom) {
-		this.availableFrom = availableFrom;
-	}
-
-	public ZonedDateTime getAvailableTos() {
-		return availableTos;
-	}
-
-	public void setAvailableTos(ZonedDateTime availableTos) {
-		this.availableTos = availableTos;
-	}
+	@OneToMany(mappedBy = "car")
+	@Cascade(CascadeType.ALL)
+	private final Set<Availibility> availibilities = new HashSet<>();
 
 	public String getCarNumberPlate() {
 		return carNumberPlate;
@@ -57,6 +44,15 @@ public class Car {
 
 	public Long getId() {
 		return id;
+	}
+
+	public Set<Availibility> getAvailibilities() {
+		return availibilities;
+	}
+
+	public void addAvailibilitie(Availibility availibility) {
+		availibilities.add(availibility);
+		availibility.setCar(this);
 	}
 
 }
