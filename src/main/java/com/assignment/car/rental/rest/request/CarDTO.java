@@ -1,13 +1,19 @@
 package com.assignment.car.rental.rest.request;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import com.assignment.car.rental.entities.CarType;
 
+@Valid
 public class CarDTO {
 
 	private Long id;
 
+	@NotNull
 	private String carNumberPlate;
 
+	@NotNull
 	private CarType carType;
 
 	public Long getId() {

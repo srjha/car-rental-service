@@ -9,12 +9,11 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
 import com.assignment.car.rental.rest.response.ErrorResponse;
 
 @RestControllerAdvice
-public class RestExceptionHandler extends RequestMappingHandlerAdapter {
+public class RestExceptionHandler {
 
 	@ExceptionHandler(value = { RequestEntityAlreadyExists.class })
 	protected ResponseEntity<ErrorResponse> handle(RequestEntityAlreadyExists ex) {
