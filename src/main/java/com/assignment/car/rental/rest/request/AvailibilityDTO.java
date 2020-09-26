@@ -56,4 +56,18 @@ public class AvailibilityDTO {
 		return toDateTime;
 	}
 
+	@Override
+	public String toString() {
+		return "AvailibilityDTO [id=" + id + ", fromDateTime=" + fromDateTime + ", toDateTime=" + toDateTime
+				+ ", perHourRate=" + perHourRate + ", currencyCode=" + currencyCode + "]";
+	}
+
+	public void setFromDateTime(String fromDateTime) {
+		this.fromDateTime = ZonedDateTime.parse(fromDateTime);
+	}
+
+	public void setToDateTime(String toDateTime) {
+		this.toDateTime = ZonedDateTime.parse(toDateTime);
+	}
+
 }

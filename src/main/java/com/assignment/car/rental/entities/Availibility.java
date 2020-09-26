@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -19,7 +21,8 @@ public class Availibility {
 
 	private ZonedDateTime toDateTime;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "car_id", nullable = false)
 	private Car car;
 
 	private BigDecimal perHourRate;
@@ -68,6 +71,12 @@ public class Availibility {
 
 	public void setCurrencyCode(CurrencyCode currencyCode) {
 		this.currencyCode = currencyCode;
+	}
+
+	@Override
+	public String toString() {
+		return "Availibility [id=" + id + ", fromDateTime=" + fromDateTime + ", toDateTime=" + toDateTime + ", car="
+				+ car + ", perHourRate=" + perHourRate + ", currencyCode=" + currencyCode + "]";
 	}
 
 }

@@ -54,4 +54,9 @@ public class Car {
 		availibilities.add(availibility);
 		availibility.setCar(this);
 	}
+
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", carNumberPlate=" + carNumberPlate + ", carType=" + carType + "]";
+	}
 }
