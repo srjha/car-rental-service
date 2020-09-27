@@ -4,19 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-public class Car {
-
-	@Id
-	@GeneratedValue
-	private Long id;
+public class Car extends AbstractEntity {
 
 	private String carNumberPlate;
 
@@ -40,10 +34,6 @@ public class Car {
 
 	public void setCarType(CarType carType) {
 		this.carType = carType;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 	public Set<Availibility> getAvailibilities() {

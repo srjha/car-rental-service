@@ -5,17 +5,11 @@ import java.time.ZonedDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Availibility {
-
-	@Id
-	@GeneratedValue
-	private Long id;
+public class Availibility extends AbstractEntity {
 
 	private ZonedDateTime fromDateTime;
 
@@ -35,10 +29,6 @@ public class Availibility {
 
 	public void setCar(Car car) {
 		this.car = car;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 	public ZonedDateTime getFromDateTime() {

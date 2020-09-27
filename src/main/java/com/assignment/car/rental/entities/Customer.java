@@ -1,15 +1,9 @@
 package com.assignment.car.rental.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 @Entity
-public class Customer {
-
-	@Id
-	@GeneratedValue
-	private Long id;
+public class Customer extends AbstractEntity {
 
 	private String firstName;
 
@@ -29,10 +23,6 @@ public class Customer {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 }
