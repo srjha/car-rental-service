@@ -55,4 +55,20 @@ public class RentalOrder extends AbstractEntity {
 				.multiply(BigDecimal.valueOf(Duration.between(dropoffTime, pickupTime).toHours()));
 	}
 
+	public Availibility getAvailibility() {
+		return availibility;
+	}
+
+	public void setAvailibility(Availibility availibility) {
+		this.availibility = availibility;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 }

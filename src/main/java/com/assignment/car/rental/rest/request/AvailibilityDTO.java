@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.assignment.car.rental.entities.CurrencyCode;
+import com.assignment.car.rental.entities.RentalStatus;
 
 @Valid
 public class AvailibilityDTO {
@@ -23,6 +24,8 @@ public class AvailibilityDTO {
 	private BigDecimal perHourRate;
 
 	private CurrencyCode currencyCode = CurrencyCode.SEK;
+
+	private RentalStatus rentalStatus = RentalStatus.AVAILABLE;
 
 	public BigDecimal getPerHourRate() {
 		return perHourRate;
@@ -68,6 +71,14 @@ public class AvailibilityDTO {
 
 	public void setToDateTime(String toDateTime) {
 		this.toDateTime = ZonedDateTime.parse(toDateTime);
+	}
+
+	public RentalStatus getRentalStatus() {
+		return rentalStatus;
+	}
+
+	public void setRentalStatus(RentalStatus rentalStatus) {
+		this.rentalStatus = rentalStatus;
 	}
 
 }

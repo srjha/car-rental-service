@@ -45,4 +45,9 @@ public class RestExceptionHandler {
 
 	}
 
+	@ExceptionHandler(value = { CannotBookRentalOrderException.class })
+	protected ResponseEntity<ErrorResponse> handle(CannotBookRentalOrderException ex) {
+		return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body(new ErrorResponse(ex.getMessage()));
+
+	}
 }

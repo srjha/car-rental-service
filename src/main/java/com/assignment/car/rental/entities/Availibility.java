@@ -24,6 +24,8 @@ public class Availibility extends AbstractEntity {
 
 	private CurrencyCode currencyCode;
 
+	private RentalStatus rentalStatus;
+
 	public Car getCar() {
 		return car;
 	}
@@ -68,6 +70,14 @@ public class Availibility extends AbstractEntity {
 	public String toString() {
 		return "Availibility [id=" + id + ", fromDateTime=" + fromDateTime + ", toDateTime=" + toDateTime + ", car="
 				+ car + ", perHourRate=" + perHourRate + ", currencyCode=" + currencyCode + "]";
+	}
+
+	public RentalStatus getRentalStatus() {
+		return rentalStatus;
+	}
+
+	public void setRentalStatus(RentalStatus rentalStatus) {
+		this.rentalStatus = rentalStatus;
 	}
 
 }
