@@ -3,3 +3,8 @@ JDBC URI: jdbc:h2:mem:testdb
 Password: password
 
 Data can be persisteed in file system by uncommenting spring.datasource.url=jdbc:h2:file:/data/car-rental
+
+
+
+Future Enhancements
+1. Pagination

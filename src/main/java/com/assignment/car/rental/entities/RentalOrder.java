@@ -52,7 +52,7 @@ public class RentalOrder extends AbstractEntity {
 	@PreUpdate
 	public void calcTotalCost() {
 		totalCost = availibility.getPerHourRate()
-				.multiply(BigDecimal.valueOf(Duration.between(dropoffTime, pickupTime).toHours()));
+				.multiply(BigDecimal.valueOf(Duration.between(pickupTime, dropoffTime).toHours()));
 	}
 
 	public Availibility getAvailibility() {
@@ -69,6 +69,10 @@ public class RentalOrder extends AbstractEntity {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public void setTotalCost(BigDecimal totalCost) {
+		this.totalCost = totalCost;
 	}
 
 }

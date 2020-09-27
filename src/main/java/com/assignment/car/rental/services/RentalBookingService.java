@@ -12,6 +12,8 @@ import com.assignment.car.rental.exception.CannotBookRentalOrderException;
 import com.assignment.car.rental.repositories.AvailibilityRepository;
 import com.assignment.car.rental.repositories.CustomerRepository;
 import com.assignment.car.rental.repositories.RentalOrderRepository;
+import com.assignment.car.rental.rest.request.AvailibilityDTO;
+import com.assignment.car.rental.rest.request.CustomerDTO;
 import com.assignment.car.rental.rest.response.RentalOrderDTO;
 
 @Service
@@ -49,13 +51,30 @@ public class RentalBookingService extends AbstractService {
 		order.setPickupTime(pickupTime);
 
 		final var savedOrder = rentalOrderRepository.save(order);
+		foundAvail.setRentalStatus(RentalStatus.BOOKED);
 
-		return modelMapper.map(savedOrder, RentalOrderDTO.class);
+		return map(savedOrder);
 	}
 
 	public List<RentalOrderDTO> search(ZonedDateTime pickupTime, ZonedDateTime dropoffTime) {
-		return rentalOrderRepository.findWithPickupAndDropTime(pickupTime, dropoffTime).stream()
-				.map(o -> modelMapper.map(o, RentalOrderDTO.class)).collect(Collectors.toList());
+		return rentalOrderRepository.findWithPickupAndDropTime(pickupTime, dropoffTime).stream().map(this::map)
+				.collect(Collectors.toList());
+	}
+
+	public List<RentalOrderDTO> search(ZonedDateTime pickupTime, ZonedDateTime dropoffTime, Integer intervalInHr) {
+		final var result = rentalOrderRepository.findWithPickupAndDropTime(pickupTime, dropoffTime).stream();
+
+		result.map(this::map).collect(Collectors.toList());
+
+		return null;
+	}
+
+	private RentalOrderDTO map(RentalOrder o) {
+		final var orderDTO = modelMapper.map(o, RentalOrderDTO.class);
+		orderDTO.setAvailibility(modelMapper.map(o.getAvailibility(), AvailibilityDTO.class));
+		orderDTO.setCustomer(modelMapper.map(o.getCustomer(), CustomerDTO.class));
+
+		return orderDTO;
 	}
 
 }

@@ -9,7 +9,6 @@ import org.springframework.validation.annotation.Validated;
 
 import com.assignment.car.rental.rest.request.AvailibilityDTO;
 import com.assignment.car.rental.rest.request.CustomerDTO;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Validated
 public class RentalOrderDTO {
@@ -30,7 +29,6 @@ public class RentalOrderDTO {
 		return availibility;
 	}
 
-	@JsonIgnore
 	public void setAvailibility(AvailibilityDTO availibility) {
 		this.availibility = availibility;
 	}
@@ -39,7 +37,6 @@ public class RentalOrderDTO {
 		return customer;
 	}
 
-	@JsonIgnore
 	public void setCustomer(CustomerDTO customer) {
 		this.customer = customer;
 	}
@@ -48,7 +45,6 @@ public class RentalOrderDTO {
 		return totalCost;
 	}
 
-	@JsonIgnore
 	public void setTotalCost(BigDecimal totalCost) {
 		this.totalCost = totalCost;
 	}

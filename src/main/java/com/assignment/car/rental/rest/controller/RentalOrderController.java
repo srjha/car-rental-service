@@ -1,7 +1,5 @@
 package com.assignment.car.rental.rest.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.assignment.car.rental.rest.response.RentalOrderDTO;
+import com.assignment.car.rental.rest.response.Report;
+import com.assignment.car.rental.rest.response.ReportType;
 import com.assignment.car.rental.services.RentalBookingService;
 
 @Validated
@@ -36,8 +36,10 @@ public class RentalOrderController {
 	}
 
 	@GetMapping("/orders")
-	ResponseEntity<List<RentalOrderDTO>> search(@Valid RentalOrderDTO order) {
-		return ResponseEntity.ok(rentalOrderService.search(order.getPickupTime(), order.getDropoffTime()));
+	ResponseEntity<Report> search(@Valid RentalOrderDTO order,
+			@RequestParam(name = "intervalInHr", required = false) Integer intervalInHr) {
+		return ResponseEntity.ok(new Report(ReportType.BOOKED_CAR_DETAILS,
+				rentalOrderService.search(order.getPickupTime(), order.getDropoffTime())));
 	}
 
 }
