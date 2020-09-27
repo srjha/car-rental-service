@@ -1,7 +1,7 @@
 package com.assignment.car.rental.services;
 
+import java.math.BigDecimal;
 import java.time.ZonedDateTime;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -15,6 +15,7 @@ import com.assignment.car.rental.repositories.RentalOrderRepository;
 import com.assignment.car.rental.rest.request.AvailibilityDTO;
 import com.assignment.car.rental.rest.request.CustomerDTO;
 import com.assignment.car.rental.rest.response.RentalOrderDTO;
+import com.assignment.car.rental.rest.response.Report;
 
 @Service
 public class RentalBookingService extends AbstractService {
@@ -56,17 +57,16 @@ public class RentalBookingService extends AbstractService {
 		return map(savedOrder);
 	}
 
-	public List<RentalOrderDTO> search(ZonedDateTime pickupTime, ZonedDateTime dropoffTime) {
-		return rentalOrderRepository.findWithPickupAndDropTime(pickupTime, dropoffTime).stream().map(this::map)
-				.collect(Collectors.toList());
-	}
+	public Report search(ZonedDateTime pickupTime, ZonedDateTime dropoffTime) {
 
-	public List<RentalOrderDTO> search(ZonedDateTime pickupTime, ZonedDateTime dropoffTime, Integer intervalInHr) {
-		final var result = rentalOrderRepository.findWithPickupAndDropTime(pickupTime, dropoffTime).stream();
+		final var orders = rentalOrderRepository.findWithPickupAndDropTime(pickupTime, dropoffTime);
+		final var report = new Report(orders.stream().map(this::map).collect(Collectors.toList()));
 
-		result.map(this::map).collect(Collectors.toList());
+		report.setTotalCarsBooked(orders.size());
+		report.setTotalPayment(
+				orders.parallelStream().map(RentalOrder::getTotalCost).reduce(BigDecimal.ZERO, BigDecimal::add));
 
-		return null;
+		return report;
 	}
 
 	private RentalOrderDTO map(RentalOrder o) {
