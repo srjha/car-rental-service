@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Availibility extends AbstractEntity {
+	private static final long serialVersionUID = -1784886305565497951L;
 
 	private ZonedDateTime fromDateTime;
 

@@ -11,6 +11,7 @@ import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Car extends AbstractEntity {
+	private static final long serialVersionUID = -2684053076841105911L;
 
 	private String carNumberPlate;
 

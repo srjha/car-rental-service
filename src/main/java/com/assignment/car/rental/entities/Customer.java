@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class Customer extends AbstractEntity {
+	private static final long serialVersionUID = 5493458942779884023L;
 
 	private String firstName;
 
