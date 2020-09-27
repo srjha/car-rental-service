@@ -1,6 +1,7 @@
 package com.assignment.car.rental.rest.request;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Valid
@@ -13,6 +14,9 @@ public class CustomerDTO {
 
 	@NotNull
 	private String lastname;
+
+	@Email
+	private String email;
 
 	public Long getId() {
 		return id;
@@ -36,6 +40,14 @@ public class CustomerDTO {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
