@@ -40,4 +40,9 @@ public class CarDTO {
 		this.carType = carType;
 	}
 
+	@Override
+	public String toString() {
+		return "CarDTO [id=" + id + ", carNumberPlate=" + carNumberPlate + ", carType=" + carType + "]";
+	}
+
 }

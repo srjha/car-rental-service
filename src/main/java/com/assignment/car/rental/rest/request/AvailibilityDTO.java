@@ -15,10 +15,10 @@ public class AvailibilityDTO {
 	private Long id;
 
 	@NotNull
-	private ZonedDateTime fromDateTime;
+	private String fromDateTime;
 
 	@NotNull
-	private ZonedDateTime toDateTime;
+	private String toDateTime;
 
 	@NotNull
 	private BigDecimal perHourRate;
@@ -51,12 +51,20 @@ public class AvailibilityDTO {
 		this.id = id;
 	}
 
-	public ZonedDateTime getFromDateTime() {
-		return fromDateTime;
+	public ZonedDateTime getFromDateTimeParsed() {
+		return ZonedDateTime.parse(fromDateTime);
 	}
 
-	public ZonedDateTime getToDateTime() {
-		return toDateTime;
+	public ZonedDateTime getToDateTimeParsed() {
+		return ZonedDateTime.parse(toDateTime);
+	}
+
+	public String getFromDateTime() {
+		return fromDateTime.toString();
+	}
+
+	public String getToDateTime() {
+		return toDateTime.toString();
 	}
 
 	@Override
@@ -66,11 +74,11 @@ public class AvailibilityDTO {
 	}
 
 	public void setFromDateTime(String fromDateTime) {
-		this.fromDateTime = ZonedDateTime.parse(fromDateTime);
+		this.fromDateTime = fromDateTime;
 	}
 
 	public void setToDateTime(String toDateTime) {
-		this.toDateTime = ZonedDateTime.parse(toDateTime);
+		this.toDateTime = toDateTime;
 	}
 
 	public RentalStatus getRentalStatus() {

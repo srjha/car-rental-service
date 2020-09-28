@@ -67,7 +67,7 @@ public class CarService extends AbstractService {
 
 	public List<CarDTO> search(@Valid AvailibilityDTO search) {
 		final var searchResults = availibilityRepository.findByFromDateTimeAndToDateTimeAndPerHourRate(
-				search.getFromDateTime(), search.getToDateTime(), search.getPerHourRate());
+				search.getFromDateTimeParsed(), search.getToDateTimeParsed(), search.getPerHourRate());
 
 		LOGGER.info("Search results: {}", searchResults);
 		return searchResults.stream().map(Availibility::getCar).map(c -> modelMapper.map(c, CarDTO.class))

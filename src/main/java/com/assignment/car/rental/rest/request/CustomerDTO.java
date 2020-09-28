@@ -50,4 +50,10 @@ public class CustomerDTO {
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+		return "CustomerDTO [id=" + id + ", firstName=" + firstName + ", lastname=" + lastname + ", email=" + email
+				+ "]";
+	}
+
 }
