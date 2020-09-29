@@ -15,8 +15,8 @@ import com.assignment.car.rental.entities.Car;
 import com.assignment.car.rental.entities.CarType;
 import com.assignment.car.rental.repositories.CarRepository;
 
-@RunWith(SpringRunner.class)
 @DataJpaTest
+@RunWith(SpringRunner.class)
 public class CarRepositoryIntegrationTest {
 
 	@Autowired

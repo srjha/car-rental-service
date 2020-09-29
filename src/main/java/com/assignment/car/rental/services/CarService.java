@@ -15,8 +15,6 @@ import com.assignment.car.rental.entities.Car;
 import com.assignment.car.rental.exception.RequestEntityAlreadyExists;
 import com.assignment.car.rental.repositories.AvailibilityRepository;
 import com.assignment.car.rental.repositories.CarRepository;
-import com.assignment.car.rental.repositories.CustomerRepository;
-import com.assignment.car.rental.repositories.RentalOrderRepository;
 import com.assignment.car.rental.rest.request.AvailibilityDTO;
 import com.assignment.car.rental.rest.request.CarDTO;
 
@@ -28,8 +26,7 @@ public class CarService extends AbstractService {
 
 	private final AvailibilityRepository availibilityRepository;
 
-	public CarService(CarRepository carRepository, AvailibilityRepository availibilityRepository,
-			CustomerRepository customerRepository, RentalOrderRepository rentalOrderRepository) {
+	public CarService(CarRepository carRepository, AvailibilityRepository availibilityRepository) {
 		this.carRepository = carRepository;
 		this.availibilityRepository = availibilityRepository;
 	}
