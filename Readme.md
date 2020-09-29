@@ -116,6 +116,17 @@ spring.datasource.url=jdbc:h2:file:/data/car-rental
 Postman collection can be imported and used from testing/car-rental.postman_collection.json
 ```
 
+## Containerization
+```
+Dockerfile is added and below steps can be followed to use it.
+
+To Build
+docker build . -t car-rental-service
+
+To Run
+docker run -d -p 8080:8080 car-rental-service
+
+```
 
 ## Future Enhancements
 ##### Pagination
