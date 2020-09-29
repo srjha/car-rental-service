@@ -17,6 +17,12 @@ import com.assignment.car.rental.rest.request.CustomerDTO;
 import com.assignment.car.rental.rest.response.RentalOrderDTO;
 import com.assignment.car.rental.rest.response.Report;
 
+/**
+ * Service dealing with booking.
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Service
 public class RentalBookingService extends AbstractService {
 

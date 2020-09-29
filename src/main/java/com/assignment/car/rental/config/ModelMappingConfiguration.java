@@ -5,6 +5,12 @@ import org.modelmapper.config.Configuration.AccessLevel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configs related to mapping of models
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Configuration
 public class ModelMappingConfiguration {
 

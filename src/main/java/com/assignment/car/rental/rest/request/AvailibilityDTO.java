@@ -9,6 +9,12 @@ import javax.validation.constraints.NotNull;
 import com.assignment.car.rental.entities.CurrencyCode;
 import com.assignment.car.rental.entities.RentalStatus;
 
+/**
+ * Availibility JSON
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Valid
 public class AvailibilityDTO {
 

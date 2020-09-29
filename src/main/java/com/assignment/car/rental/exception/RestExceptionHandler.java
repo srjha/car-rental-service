@@ -12,6 +12,12 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import com.assignment.car.rental.rest.response.ErrorResponse;
 
+/**
+ * A global exception handler. Sends Error details in REST response to caller
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @RestControllerAdvice
 public class RestExceptionHandler {
 

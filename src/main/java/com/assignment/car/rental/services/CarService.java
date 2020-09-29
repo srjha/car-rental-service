@@ -18,6 +18,12 @@ import com.assignment.car.rental.repositories.CarRepository;
 import com.assignment.car.rental.rest.request.AvailibilityDTO;
 import com.assignment.car.rental.rest.request.CarDTO;
 
+/**
+ * Service dealing with car domain
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Service
 public class CarService extends AbstractService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CarService.class);

@@ -42,6 +42,19 @@ curl --location --request GET 'http://localhost:8080/orders?pickupTime=2020-09-2
 ```
 I have put 100,000 iteration as limit. So test stops if shutdown or 100K iteration finished.
 ```
+###### In case you want to avoid running auto test,
+```
+Please run with app.run.test.client.enabled=false in src/main/resources/application.properties 
+
+or
+
+set ENV VAR 
+APP_RUN_TEST_CLIENT_ENABLED=false
+
+or
+java -jar target/car-rental-service-0.0.1-SNAPSHOT.jar --app.run.test.client.enabled=false
+
+```
 ##### In the backend application, provide at least 1 system test case which should be run using a different maven profile.
 `intTest profile is attached to integration tests. Need to execute command below to run. These tests are excluded from main build`
 

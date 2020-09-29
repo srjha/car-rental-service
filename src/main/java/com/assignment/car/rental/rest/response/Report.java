@@ -3,6 +3,12 @@ package com.assignment.car.rental.rest.response;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Report DTO
+ *
+ * @author Shashi Ranjan
+ *
+ */
 public class Report {
 
 	private List<RentalOrderDTO> rentals;

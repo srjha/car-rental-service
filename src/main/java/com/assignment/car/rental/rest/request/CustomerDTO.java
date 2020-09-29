@@ -4,6 +4,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Customer JSONs
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Valid
 public class CustomerDTO {
 

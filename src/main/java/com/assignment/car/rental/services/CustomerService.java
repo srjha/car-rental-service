@@ -11,6 +11,12 @@ import com.assignment.car.rental.entities.Customer;
 import com.assignment.car.rental.repositories.CustomerRepository;
 import com.assignment.car.rental.rest.request.CustomerDTO;
 
+/**
+ * Service dealing with customer domains
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Service
 @Transactional
 public class CustomerService extends AbstractService {

@@ -8,6 +8,12 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+/**
+ * Configs related to web layer
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Configuration
 public class WebConfigurations {
 

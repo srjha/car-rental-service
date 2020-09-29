@@ -10,6 +10,12 @@ import org.springframework.validation.annotation.Validated;
 import com.assignment.car.rental.rest.request.AvailibilityDTO;
 import com.assignment.car.rental.rest.request.CustomerDTO;
 
+/**
+ * Rental order JSON
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Validated
 public class RentalOrderDTO {
 

@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.assignment.car.rental.rest.request.CustomerDTO;
 import com.assignment.car.rental.services.CustomerService;
 
+/**
+ * Rest end for customer and related operations
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Validated
 @RestController
 public class CustomerController {

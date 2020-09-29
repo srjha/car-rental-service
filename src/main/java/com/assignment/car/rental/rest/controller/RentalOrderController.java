@@ -15,6 +15,12 @@ import com.assignment.car.rental.rest.response.RentalOrderDTO;
 import com.assignment.car.rental.rest.response.Report;
 import com.assignment.car.rental.services.RentalBookingService;
 
+/**
+ * Rental order REST endpoint
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Validated
 @RestController
 public class RentalOrderController {

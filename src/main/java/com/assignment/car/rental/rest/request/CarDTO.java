@@ -5,6 +5,12 @@ import javax.validation.constraints.NotNull;
 
 import com.assignment.car.rental.entities.CarType;
 
+/**
+ * Car JSONs
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Valid
 public class CarDTO {
 

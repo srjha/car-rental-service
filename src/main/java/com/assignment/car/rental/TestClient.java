@@ -7,6 +7,7 @@ import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.event.EventListener;
@@ -20,9 +21,16 @@ import com.assignment.car.rental.rest.request.CarDTO;
 import com.assignment.car.rental.rest.request.CustomerDTO;
 import com.assignment.car.rental.rest.response.RentalOrderDTO;
 
+/**
+ * Auto run test
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Component
+@ConditionalOnProperty("app.run.test.client.enabled")
 public class TestClient {
-	private static final int MAX_THREAD_POOL_COUNT = 1000;
+	private static final int MAX_THREAD_POOL_COUNT = 10;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TestClient.class);
 

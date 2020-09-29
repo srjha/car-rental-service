@@ -10,6 +10,13 @@ import org.springframework.data.auditing.DateTimeProvider;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * Entry point of application, also contains some of application wide
+ * configurations
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableJpaAuditing(dateTimeProviderRef = "zonedDateTimeProvider")

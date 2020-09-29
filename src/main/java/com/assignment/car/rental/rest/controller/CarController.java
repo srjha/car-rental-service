@@ -18,6 +18,12 @@ import com.assignment.car.rental.rest.request.AvailibilityDTO;
 import com.assignment.car.rental.rest.request.CarDTO;
 import com.assignment.car.rental.services.CarService;
 
+/**
+ * REST End dealing with car and related operationss
+ *
+ * @author Shashi Ranjan
+ *
+ */
 @Validated
 @RestController
 public class CarController {
