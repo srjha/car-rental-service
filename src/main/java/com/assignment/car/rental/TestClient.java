@@ -50,6 +50,9 @@ public class TestClient {
 
 		}
 
+		LOGGER.info("Test completed");
+		executor.shutdown();
+
 	}
 
 	private void runIteration() {
