@@ -39,6 +39,9 @@ curl --location --request GET 'http://localhost:8080/orders?pickupTime=2020-09-2
 ### General Requirements
 ##### In addition to the backend, you should also implement a client application which simulates 5 users who register cars and get reports and 10 users who book cars. They should run until the client program is stopped.
 `/car-rental-service/src/main/java/com/assignment/car/rental/TestClient.java runs on startup with 10 parallel threads to execute.`
+```
+I have put 100,000 iteration as limit. So test stops if shutdown or 100K iteration finished.
+```
 ##### In the backend application, provide at least 1 system test case which should be run using a different maven profile.
 `intTest profile is attached to integration tests. Need to execute command below to run. These tests are excluded from main build`
 
@@ -91,6 +94,14 @@ spring.datasource.url=jdbc:h2:file:/data/car-rental
 # spring.datasource.url=jdbc:h2:mem:testdb
 ```
 
+## Testing Instruction (Local run only)
+#### Swagger UI
+`Once service is UP swagger UI can be used at http://localhost:8080/swagger-ui/`
+
+#### Postman collection
+```
+Postman collection can be imported and used from testing/car-rental.postman_collection.json
+```
 
 
 ## Future Enhancements

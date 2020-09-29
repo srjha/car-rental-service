@@ -22,9 +22,11 @@ import com.assignment.car.rental.rest.response.RentalOrderDTO;
 
 @Component
 public class TestClient {
+	private static final int MAX_THREAD_POOL_COUNT = 1000;
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(TestClient.class);
 
-	private static final int MAX_TEST_ITERATION_COUNT = 10;
+	private static final int MAX_TEST_ITERATION_COUNT = 100000;
 
 	private static final String BASE_URL = "http://localhost:8080";
 	private static final String CARS_API = BASE_URL + "/cars";
@@ -42,7 +44,7 @@ public class TestClient {
 	@EventListener
 	public void startTest(ApplicationReadyEvent appReady) {
 
-		final var executor = Executors.newScheduledThreadPool(10);
+		final var executor = Executors.newScheduledThreadPool(MAX_THREAD_POOL_COUNT);
 
 		for (var i = 1; i <= MAX_TEST_ITERATION_COUNT; i++) {
 			LOGGER.info("Starting iteration {}", i);
@@ -50,7 +52,7 @@ public class TestClient {
 
 		}
 
-		LOGGER.info("Test completed");
+		LOGGER.info("All Test Fired");
 		executor.shutdown();
 
 	}

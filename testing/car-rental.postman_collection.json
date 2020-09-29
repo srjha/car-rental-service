@@ -1,0 +1,475 @@
+{
+	"info": {
+		"_postman_id": "6acb4a0d-2425-411b-96a7-92b0ffe1a9e1",
+		"name": "car-rental",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Car Entry",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "48bfe3c9-3de8-42ec-94cb-f611baf327ce",
+						"exec": [
+							"const carNum='ABCD'+_.random(1111, 9999);",
+							"const timeNow = new Date();",
+							"",
+							"",
+							"var c = {",
+							"  \"carNumberPlate\": carNum,",
+							"  \"carType\": \"SEDAN\",",
+							"  \"something\": 10",
+							"};",
+							"",
+							"pm.environment.set('carJson', JSON.stringify(c));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "442999aa-aba4-4c65-b31d-73f337d64355",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.environment.set('carId', jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{carJson}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{service}}/cars",
+					"host": [
+						"{{service}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Null value JSON for car",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ee8e35ab-d494-4889-a6e8-ea9a2947d536",
+						"exec": [
+							"",
+							"var c = {",
+							"  \"carNumberPlate\": null,",
+							"  \"carType\": null",
+							"};",
+							"",
+							"pm.environment.set('carJson', JSON.stringify(c));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "969c89dc-c59b-4b46-ba13-b022ed8cbf20",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{carJson}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{service}}/cars",
+					"host": [
+						"{{service}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add availibility",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "dd9dbcd2-2bb6-491c-a970-86dc9269c62d",
+						"exec": [
+							"const perHourRate = _.random(1, 20);",
+							"const timeNow = new Date();",
+							"var c = {",
+							"  \"currencyCode\": \"SEK\",",
+							"  \"fromDateTime\": \"2020-09-25T06:00Z\",",
+							"  \"perHourRate\": perHourRate,",
+							"  \"toDateTime\": \"2020-09-28T06:00Z\",",
+							"};",
+							"",
+							"pm.environment.set('carJson', JSON.stringify(c));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "05a80733-b7e1-4fef-8c13-bf94268aad5a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.environment.set('availId', jsonData[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{carJson}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{service}}/cars/{{carId}}/availibilities",
+					"host": [
+						"{{service}}"
+					],
+					"path": [
+						"cars",
+						"{{carId}}",
+						"availibilities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add availibility NULL",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ebfc7bc1-10d8-47ff-8338-dd33152f789f",
+						"exec": [
+							"",
+							"var c = {",
+							"  \"currencyCode\": null,",
+							"  \"fromDateTime\": null,",
+							"  \"perHourRate\": null,",
+							"  \"toDateTime\": null",
+							"};",
+							"",
+							"pm.environment.set('carJson', JSON.stringify(c));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b13a8f82-c548-4f2f-8f69-95799d424f62",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{carJson}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{service}}/cars/{{carId}}/availibilities",
+					"host": [
+						"{{service}}"
+					],
+					"path": [
+						"cars",
+						"{{carId}}",
+						"availibilities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer Entry",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "41282525-c07b-4927-8149-f692941825cb",
+						"exec": [
+							"const fn='fn'+_.random(800, 8000);",
+							"const ln='ln'+_.random(8000, 9000);",
+							"const email='em_'+_.random(88888, 888888)+'@assignment-xyz.com'",
+							"",
+							"",
+							"",
+							"var c = {",
+							"  \"firstName\": fn,",
+							"  \"lastname\": ln,",
+							"  \"email\": email",
+							"};",
+							"",
+							"pm.environment.set('carJson', JSON.stringify(c));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1dd201ad-8eca-4ab8-8051-e1ce05d48d26",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set('customerId', jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{carJson}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{service}}/customers",
+					"host": [
+						"{{service}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search car",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{service}}/cars/availibilities?fromDateTime=2020-09-27T06:00Z&perHourRate=10000000&toDateTime=2020-09-28T06:00Z",
+					"host": [
+						"{{service}}"
+					],
+					"path": [
+						"cars",
+						"availibilities"
+					],
+					"query": [
+						{
+							"key": "currencyCode",
+							"value": "SEK",
+							"disabled": true
+						},
+						{
+							"key": "fromDateTime",
+							"value": "2020-09-27T06:00Z"
+						},
+						{
+							"key": "perHourRate",
+							"value": "10000000"
+						},
+						{
+							"key": "toDateTime",
+							"value": "2020-09-28T06:00Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "93af6f4d-0149-48fb-b572-445a4bc32ec4",
+						"exec": [
+							"const perHourRate = _.random(1, 9999);",
+							"const timeNow = new Date();",
+							"var c = {",
+							"  \"pickupTime\": \"2020-09-25T06:00Z\",",
+							"  \"dropoffTime\": \"2020-09-28T06:00Z\"",
+							"};",
+							"",
+							"pm.environment.set('carJson', JSON.stringify(c));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5df176a-ac19-4610-878b-532ee7d8c15d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{carJson}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{service}}/cars/{{carId}}/availibilities/{{availId}}/order?custId={{customerId}}",
+					"host": [
+						"{{service}}"
+					],
+					"path": [
+						"cars",
+						"{{carId}}",
+						"availibilities",
+						"{{availId}}",
+						"order"
+					],
+					"query": [
+						{
+							"key": "custId",
+							"value": "{{customerId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{service}}/orders?pickupTime=2020-09-27T06:00Z&dropoffTime=2020-09-28T06:00Z",
+					"host": [
+						"{{service}}"
+					],
+					"path": [
+						"orders"
+					],
+					"query": [
+						{
+							"key": "currencyCode",
+							"value": "SEK",
+							"disabled": true
+						},
+						{
+							"key": "pickupTime",
+							"value": "2020-09-27T06:00Z"
+						},
+						{
+							"key": "dropoffTime",
+							"value": "2020-09-28T06:00Z"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9ca9b411-f13e-4ba7-98a0-aa06e4ee4a10",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "fc1313fc-2a9a-4c53-b0f9-e136270ff37c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "af125706-18ea-4185-a5f1-4705e86fd96f",
+			"key": "service",
+			"value": "http://localhost:8080"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
