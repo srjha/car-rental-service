@@ -3,6 +3,7 @@ package com.assignment.car.rental;
 import java.math.BigDecimal;
 import java.security.SecureRandom;
 import java.time.ZonedDateTime;
+import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,8 @@ import com.assignment.car.rental.rest.response.RentalOrderDTO;
 public class TestClient {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TestClient.class);
 
+	private static final int MAX_TEST_ITERATION_COUNT = 10;
+
 	private static final String BASE_URL = "http://localhost:8080";
 	private static final String CARS_API = BASE_URL + "/cars";
 	private static final String CUSTOMER_API = BASE_URL + "/customers";
@@ -39,14 +42,26 @@ public class TestClient {
 	@EventListener
 	public void startTest(ApplicationReadyEvent appReady) {
 
+		final var executor = Executors.newScheduledThreadPool(10);
+
+		for (var i = 1; i <= MAX_TEST_ITERATION_COUNT; i++) {
+			LOGGER.info("Starting iteration {}", i);
+			executor.submit(this::runIteration);
+
+		}
+
+	}
+
+	private void runIteration() {
+
 		final var carId = createCar();
 
 		final var availableFrom = ZonedDateTime.now().plusDays(5);
 		final var availableTill = ZonedDateTime.now().plusDays(10);
 		final var availId = addAvailibility(carId, availableFrom, availableTill);
+
 		final var custId = addCustomer();
 		book(availableFrom, availableTill, carId, availId, custId);
-
 	}
 
 	private void book(ZonedDateTime availableFrom, ZonedDateTime availableTill, Long carId, Long availId, Long custId) {
@@ -83,6 +98,7 @@ public class TestClient {
 		final var availApiResp = restTemplate.postForEntity(ADD_AVAIL_API, availibility, AvailibilityDTO[].class,
 				carId);
 		LOGGER.info(ADD_AVAIL_API + " response: {}", availApiResp.getBody()[0]);
+
 		return availApiResp.getBody()[0].getId();
 	}
 

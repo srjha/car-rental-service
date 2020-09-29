@@ -65,4 +65,10 @@ public class RentalOrderDTO {
 		this.dropoffTime = ZonedDateTime.parse(dropoffTime);
 	}
 
+	@Override
+	public String toString() {
+		return "RentalOrderDTO [availibility=" + availibility + ", customer=" + customer + ", totalCost=" + totalCost
+				+ ", pickupTime=" + pickupTime + ", dropoffTime=" + dropoffTime + "]";
+	}
+
 }
